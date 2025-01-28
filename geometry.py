@@ -18,7 +18,7 @@ class Line:
         return f"Line Object from {self.pointA} to {self.pointB}"
 
 class Cell:
-    def __init__(self, has_left_wall = True, has_top_wall = True, has_right_wall = True, has_bottom_wall = True, x1 = 0, y1 = 0, x2 = 0, y2 = 0, win = None):
+    def __init__(self, win = None, x1 = 0, y1 = 0, x2 = 0, y2 = 0, has_left_wall = True, has_top_wall = True, has_right_wall = True, has_bottom_wall = True):
         self.has_left_wall = has_left_wall
         self.has_top_wall = has_top_wall
         self.has_right_wall = has_right_wall
@@ -32,11 +32,11 @@ class Cell:
     def draw(self):
         win = self.__win
         if self.has_left_wall:
-            win.draw_line(Line(Point(self.__x1, self.__y1), Point(self.__x1, self.__y2)), "red")
+            win.draw_line(Line(Point(self.__x1, self.__y1), Point(self.__x1, self.__y2)), "black")
         if self.has_top_wall:
-            win.draw_line(Line(Point(self.__x1, self.__y1), Point(self.__x2, self.__y1)), "green")
+            win.draw_line(Line(Point(self.__x1, self.__y1), Point(self.__x2, self.__y1)), "black")
         if self.has_right_wall:
-            win.draw_line(Line(Point(self.__x2, self.__y1), Point(self.__x2, self.__y2)), "blue")
+            win.draw_line(Line(Point(self.__x2, self.__y1), Point(self.__x2, self.__y2)), "black")
         if self.has_bottom_wall:
             win.draw_line(Line(Point(self.__x1, self.__y2), Point(self.__x2, self.__y2)), "black")
 
@@ -46,3 +46,6 @@ class Cell:
         if undo:
             fill_colour = "gray"
         win.draw_line(Line(Point((self.__x1 + self.__x2) // 2, (self.__y1 + self.__y2) // 2), Point((to_cell.__x1 + to_cell.__x2) // 2, (to_cell.__y1 + to_cell.__y2) // 2)), fill_colour)
+
+    def __repr__(self):
+        return f"Cell Object from co-ordinates x: {self.__x1}, y: {self.__y1} to x: {self.__x2}, y: {self.__y2}"

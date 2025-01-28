@@ -1,13 +1,10 @@
 from window import Window
 from geometry import Point, Line, Cell
+from maze import Maze
 
 def main():
     win = Window(800, 600)
-    cell1 = Cell(True, True, True, True, 50, 50, 100, 100, win)
-    cell1.draw()
-    cell2 = Cell(True, True, True, True, 110, 50, 160, 100, win)
-    cell2.draw()
-    cell1.draw_move(cell2)
+    maze = Maze(50, 50, 5, 5, 50, 50, win)
     win.wait_for_close()
 
 
