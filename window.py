@@ -20,3 +20,6 @@ class Window:
 
     def close(self):
         self.running = False
+
+    def draw_line(self, line, fill_colour):
+        line.draw(self.canvas, fill_colour)
